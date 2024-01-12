@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Post } from "types/api"
+import MainLayout from "~/layouts/MainLayout.vue";
 
 const posts: Array<Post> = [
   {
@@ -16,18 +17,19 @@ const posts: Array<Post> = [
 </script>
 
 <template>
-  <div>
-    <div v-for="post in posts" :key="post.id">
-      <p :class="$style.title">{{ post.title }}</p>
-      <p>{{ post.body }}</p>
+  <MainLayout>
+    <div :class="$style.posts_list">
+      <div v-for="post in posts" :key="post.id">
+        <PostCard :post="post" />
+      </div>
     </div>
-  </div>
+  </MainLayout>
 </template>
 
 <style module>
-.title {
-  font-size: 28px;
-  font-weight: bold;
-  font-style: normal;
+.posts_list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 </style>
