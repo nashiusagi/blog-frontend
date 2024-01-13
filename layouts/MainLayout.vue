@@ -1,11 +1,16 @@
 <template>
-  <div v-sticky="{ zIndex: 1000, stickyTop: 0}">
+  <div>
     <TheHeader />
   </div>
-  <main>
+  <main :class="$style.main">
     <slot />
   </main>
   <div>
     <TheFooter />
   </div>
 </template>
+
+<style module>
+.main {
+}
+</style>

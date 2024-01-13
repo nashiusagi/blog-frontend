@@ -13,20 +13,32 @@ const posts: Array<Post> = [
     title: 'title2',
     body: 'body2',
   },
+  {
+    id: 3,
+    title: 'title3',
+    body: 'body3',
+  },
+
 ]
 </script>
 
 <template>
   <MainLayout>
-    <div :class="$style.posts_list">
-      <div v-for="post in posts" :key="post.id">
-        <PostCard :post="post" />
+    <div :class="$style.index_body">
+      <div :class="$style.posts_list">
+        <div v-for="post in posts" :key="post.id">
+          <PostCard :post="post" />
+        </div>
       </div>
     </div>
   </MainLayout>
 </template>
 
 <style module>
+.index_body {
+  padding: 16px 12px;
+}
+
 .posts_list {
   display: flex;
   flex-direction: column;
