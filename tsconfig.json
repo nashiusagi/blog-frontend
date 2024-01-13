@@ -1,4 +1,8 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "extends": "./.nuxt/tsconfig.json",
+  // https://azukiazusa.dev/blog/msw-v2-httpresponse-json-type-error/
+  "compilerOptions": {
+    "lib": ["dom"]
+  }
 }
