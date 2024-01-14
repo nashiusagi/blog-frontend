@@ -27,9 +27,7 @@ export const usePost = async(id: number) => {
       credentials: 'include'
     })
     const responseJson = await response.json()
-    data.id = responseJson.id
-    data.title = responseJson.title
-    data.body = responseJson.body
+    Object.assign(data, responseJson)
   } catch(e){
     if(e instanceof Error){
       error.value = e.message

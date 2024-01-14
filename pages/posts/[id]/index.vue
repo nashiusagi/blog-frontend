@@ -12,9 +12,7 @@ const post = reactive<Post>({
 
 onMounted( async () => {
   const { data } = await usePost(Number(route.params.id))
-  post.id = data.id
-  post.title = data.title
-  post.body =data.body
+  Object.assign(post, data)
 })
 
 </script>
