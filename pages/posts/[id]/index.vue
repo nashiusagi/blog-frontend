@@ -4,11 +4,18 @@ import MainLayout from "~/layouts/MainLayout.vue";
 
 const route = useRoute()
 
-const post: Post = {
-  id: 1,
-  title: 'title1',
-  body: 'body1',
-}
+const post = reactive<Post>({
+  id: -1,
+  title: '',
+  body: ''
+})
+
+onMounted( async () => {
+  const { data } = await usePost(Number(route.params.id))
+  post.id = data.id
+  post.title = data.title
+  post.body =data.body
+})
 
 </script>
 
