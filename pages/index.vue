@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Post } from "types/api"
-import MainLayout from "~/layouts/MainLayout.vue"
+import type { Post } from "@/types/api"
+import MainLayout from "@/layouts/MainLayout.vue"
 
 const posts = ref<Post[]>([])
 
