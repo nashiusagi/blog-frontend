@@ -2,24 +2,13 @@
 import type { Post } from "~/types/api"
 import MainLayout from "~/layouts/MainLayout.vue";
 
-const posts: Array<Post> = [
-  {
-    id: 1,
-    title: 'title1',
-    body: 'body1',
-  },
-  {
-    id: 2,
-    title: 'title2',
-    body: 'body2',
-  },
-  {
-    id: 3,
-    title: 'title3',
-    body: 'body3',
-  },
+const posts = ref<Post[]>([])
 
-]
+onMounted( async () => {
+  const { data } = await useAllPosts()
+  console.log(data.value)
+  posts.value=data.value
+})
 </script>
 
 <template>
