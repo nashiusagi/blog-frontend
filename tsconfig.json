@@ -3,6 +3,10 @@
   "extends": "./.nuxt/tsconfig.json",
   // https://azukiazusa.dev/blog/msw-v2-httpresponse-json-type-error/
   "compilerOptions": {
-    "lib": ["dom"]
+    "lib": ["dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+    }
   }
 }

@@ -1,17 +1,24 @@
 {
   "name": "nuxt-app",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts.,.tsx,.cts,.mts --ignore-path .gitignore",
+    "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts.,.tsx,.ctrs,.mts --fix --ignore-path .gitignore",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-vue": "^9.20.1",
     "msw": "^2.0.14",
     "nuxt": "^3.9.0",
+    "prettier": "^3.2.2",
     "vite": "^5.0.11",
     "vue": "^3.4.6",
     "vue-router": "^4.2.5"

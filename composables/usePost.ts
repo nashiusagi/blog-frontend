@@ -1,4 +1,4 @@
-import type { Post } from "~/types/api";
+import type { Post } from "@/types/api";
 
 export const usePost = async(id: number) => {
   if( id < 0 ) {

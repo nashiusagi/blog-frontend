@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type { Post } from "~/types/api"
-import MainLayout from "~/layouts/MainLayout.vue";
+import type { Post } from "@/types/api"
+import MainLayout from "@/layouts/MainLayout.vue"
 
 const route = useRoute()
 
 const post = reactive<Post>({
   id: -1,
-  title: '',
-  body: ''
+  title: "",
+  body: "",
 })
 
-onMounted( async () => {
-  const { data } = await usePost(Number(route.params.id))
+onMounted(async () => {
+  const { data, } = await usePost(Number(route.params.id))
   Object.assign(post, data)
 })
 
