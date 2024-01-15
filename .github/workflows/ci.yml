@@ -49,9 +49,44 @@ jobs:
           path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
 
-  build:
+  lint:
     runs-on: ubuntu-latest
     needs: setup
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v3
+
+      - name: pnpm setup
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8 
+
+      - name: node setup
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: get pnpm store directory
+        id: pnpm-cache
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+        
+      - name: restore cache
+        id: restore-cache
+        uses: actions/cache/restore@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: install dependent modules
+        run: pnpm install --frozen-lockfile
+
+      - name: execute lint
+        run: pnpm lint
+
+  build:
+    runs-on: ubuntu-latest
+    needs: lint
     steps:
       - name: code checkout
         uses: actions/checkout@v3
