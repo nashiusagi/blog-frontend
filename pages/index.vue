@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import type { Post } from "~/types/api"
-import MainLayout from "~/layouts/MainLayout.vue";
+import type { Post } from "types/api"
+import MainLayout from "~/layouts/MainLayout.vue"
 
 const posts = ref<Post[]>([])
 
-onMounted( async () => {
-  const { data } = await useAllPosts()
-  console.log(data.value)
-  posts.value=data.value
+onMounted(async () => {
+  const { data, } = await useAllPosts()
+  posts.value = data.value
 })
 </script>
 

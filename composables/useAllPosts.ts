@@ -1,4 +1,4 @@
-import type { Post } from "~/types/api";
+import type { Post } from "types/api";
 
 export const useAllPosts = async() => {
   const runtimeConfig = useRuntimeConfig()

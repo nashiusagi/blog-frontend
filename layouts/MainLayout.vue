@@ -1,16 +1,13 @@
 <template>
   <div>
-    <TheHeader />
-  </div>
-  <main :class="$style.main">
-    <slot />
-  </main>
-  <div>
-    <TheFooter />
+    <div>
+      <TheHeader />
+    </div>
+    <main>
+      <slot />
+    </main>
+    <div>
+      <TheFooter />
+    </div>
   </div>
 </template>
-
-<style module>
-.main {
-}
-</style>

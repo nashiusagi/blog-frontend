@@ -5,13 +5,15 @@ interface Props {
   post: Post
 }
 
-defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <template>
   <div :class="$style.card">
-    <a :href="`/posts/${ post.id }`"></a>
-    <p :class="$style.title">{{ post.title }}</p>
+    <a :href="`/posts/${ post.id }`" />
+    <p :class="$style.title">
+      {{ post.title }}
+    </p>
     <p>{{ post.body }}</p>
   </div>
 </template>
