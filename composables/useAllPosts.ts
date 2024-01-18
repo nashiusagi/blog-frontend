@@ -1,6 +1,6 @@
-import type { Post } from "@/types/api";
+import type { Post } from "@/types/api"
 
-export const useAllPosts = async() => {
+export const useAllPosts = async () => {
   const runtimeConfig = useRuntimeConfig()
   const url = `${runtimeConfig.public.api.url}/api/posts`
 
@@ -11,23 +11,23 @@ export const useAllPosts = async() => {
   try {
     pending.value = true
     const response = await fetch(url, {
-      method: 'GET',
-      credentials: 'include'
-    }) 
+      method: "GET",
+      credentials: "include",
+    })
     data.value = (await response.json()) as Post[]
-  } catch (e){
-    if(e instanceof Error){
+  } catch (e) {
+    if (e instanceof Error) {
       error.value = e.message
-    }else{
+    } else {
       error.value = "something went wrong!"
     }
-  } finally{
+  } finally {
     pending.value = false
   }
 
   return {
     data,
     pending,
-    error
+    error,
   }
 }

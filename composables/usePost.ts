@@ -1,11 +1,15 @@
-import type { Post } from "@/types/api";
+import type { Post } from "@/types/api"
 
-export const usePost = async(id: number) => {
-  if( id < 0 ) {
+export const usePost = async (id: number) => {
+  if (id < 0) {
     return {
-      data: -1,
-      pending: false,
-      error: "input id is wrong."
+      data: reactive<Post>({
+        id: -1,
+        title: "",
+        body: "",
+      }),
+      pending: ref<boolean>(false),
+      error: ref<string>("input id is wrong."),
     }
   }
 
@@ -14,8 +18,8 @@ export const usePost = async(id: number) => {
 
   const data = reactive<Post>({
     id: -1,
-    title: "", 
-    body: ""
+    title: "",
+    body: "",
   })
   const pending = ref<boolean>(false)
   const error = ref<string>("")
@@ -23,15 +27,15 @@ export const usePost = async(id: number) => {
   try {
     pending.value = true
     const response = await fetch(url, {
-      method: 'GET',
-      credentials: 'include'
+      method: "GET",
+      credentials: "include",
     })
     const responseJson = await response.json()
     Object.assign(data, responseJson)
-  } catch(e){
-    if(e instanceof Error){
+  } catch (e) {
+    if (e instanceof Error) {
       error.value = e.message
-    }else{
+    } else {
       error.value = "something went wrong!"
     }
   } finally {
