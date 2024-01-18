@@ -3,9 +3,13 @@ import type { Post } from "@/types/api"
 export const usePost = async (id: number) => {
   if (id < 0) {
     return {
-      data: -1,
-      pending: false,
-      error: "input id is wrong.",
+      data: reactive<Post>({
+        id: -1,
+        title: "",
+        body: "",
+      }),
+      pending: ref<boolean>(false),
+      error: ref<string>("input id is wrong."),
     }
   }
 

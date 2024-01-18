@@ -24,11 +24,20 @@ describe("useAllPost test", () => {
 
     const spy = vi.spyOn(global, "fetch").mockResolvedValue(new Response(JSON.stringify(mockData)))
 
-    const { data, pending, } = await useAllPosts()
+    const { data, pending, error, } = await useAllPosts()
 
     expect(data.value.length).toBe(3)
     expect(pending.value).toBeFalsy()
+    expect(error.value).toBe("")
 
     spy.mockRestore()
+  })
+
+  test("失敗時はエラーを返す", async () => {
+    const { data, pending, error, } = await useAllPosts()
+
+    expect(data.value.length).toBe(0)
+    expect(pending.value).toBeFalsy()
+    expect(error.value.length).toBeGreaterThan(0)
   })
 })
