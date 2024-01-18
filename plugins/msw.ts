@@ -4,7 +4,7 @@ export default defineNuxtPlugin(async () => {
     return
   }
 
-  if (process.client) {
+  if (process.env.NODE_ENV !== "test") {
     const { worker, } = await import("@/mocks/browser")
     await worker.start()
   } else {

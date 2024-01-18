@@ -9,7 +9,7 @@
     "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.ctrs,.mts --fix --ignore-path .gitignore",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test:unit": "vitest run"
+    "test:unit": "NODE_ENV=test vitest run"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
