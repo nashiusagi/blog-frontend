@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Post } from "@/types/api"
+import type { Post } from '@/types/api'
 
 interface Props {
   post: Post

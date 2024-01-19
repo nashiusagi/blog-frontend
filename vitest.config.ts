@@ -1,10 +1,10 @@
-import { defineVitestConfig } from "nuxt-vitest/config"
+import { defineVitestConfig } from 'nuxt-vitest/config'
 
 export default defineVitestConfig({
   test: {
-    environtment: "nuxt",
+    environtment: 'nuxt',
     globals: true,
     root: __dirname,
-    setupFiles: ["./vitest.setup.ts"],
+    setupFiles: ['./vitest.setup.ts'],
   },
 })
