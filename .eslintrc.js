@@ -7,7 +7,8 @@ module.exports = {
   extends: [
     "plugin:vue/vue3-recommended",
     "eslint:recommended",
-    "@nuxtjs/eslint-config-typescript"
+    "@nuxtjs/eslint-config-typescript",
+    "plugin:storybook/recommended"
   ],
   parser: "vue-eslint-parser",
   parserOptions: {
