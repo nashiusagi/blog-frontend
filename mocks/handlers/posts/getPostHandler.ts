@@ -1,7 +1,7 @@
-import { http, HttpResponse } from "msw"
+import { http, HttpResponse } from 'msw'
 
 export const getPostHandler = () => {
-  return http.get("/api/posts/:id", ({ params, }) => {
+  return http.get('/api/posts/:id', ({ params, }) => {
     return HttpResponse.json(
       {
         id: params.id,

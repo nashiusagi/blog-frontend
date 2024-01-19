@@ -2,25 +2,25 @@
 export default defineNuxtConfig({
   devtools: { enabled: true, },
   modules: [
-    "nuxt-vitest"
+    'nuxt-vitest'
   ],
   ssr: false,
   app: {
     head: {
       style: [
         {
-          children: "body { margin: 0px }",
+          children: 'body { margin: 0px }',
         }
       ],
     },
   },
   alias: {
-    "class-validator": "class-validator/cjs/index.js",
+    'class-validator': 'class-validator/cjs/index.js',
   },
   runtimeConfig: {
     public: {
       api: {
-        url: "",
+        url: '',
       },
     },
   },
