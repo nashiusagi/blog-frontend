@@ -24,4 +24,4 @@ logs
 !.env.example
 
 # storybook
-stories/
+storybook-static/
