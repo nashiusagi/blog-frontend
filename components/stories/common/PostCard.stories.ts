@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import PostCard from '../PostCard.vue'
+import PostCard from '../../index/PostCard.vue'
 
 type Story = StoryObj<typeof PostCard>
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Post } from '@/types/api'
 import MainLayout from '@/layouts/MainLayout.vue'
+import PostCard from '@/components/index/PostCard.vue'
 import IndexTitleBlock from '@/components/index/IndexTitleBlock.vue'
 import CategoriesBlock from '@/components/common/CategoriesBlock.vue'
 
