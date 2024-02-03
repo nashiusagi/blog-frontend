@@ -25,7 +25,7 @@ onMounted(async () => {
           <PostCard :post="post" />
         </div>
       </div>
-      <CategoriesBlock :categories="categories"/>
+      <CategoriesBlock :categories="categories" />
     </div>
   </MainLayout>
 </template>
