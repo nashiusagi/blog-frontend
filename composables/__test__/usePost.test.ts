@@ -1,5 +1,6 @@
 // @vitest-environment nuxt
 import { describe, expect, test, vi } from 'vitest'
+import dayjs from 'dayjs'
 import { usePost } from '@/composables/usePost'
 
 describe('usePost test', () => {
@@ -8,6 +9,20 @@ describe('usePost test', () => {
       id: 1,
       title: 'title1',
       body: 'body1',
+      thumbnail_path: '',
+      category: {
+        id: 1,
+        name: '生活',
+      },
+      tags: [
+        {
+          id: 1,
+          name: '掃除',
+        }
+      ],
+      created_time: dayjs().format(),
+      updated_time: dayjs().format(),
+      deleted_time: dayjs().format(),
     }
 
     const spy = vi.spyOn(global, 'fetch').mockResolvedValue(new Response(JSON.stringify(mockData)))

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Post } from '@/types/api'
+import type { PostSummary } from '@/types/api'
 
 interface Props {
-  post: Post
+  post: PostSummary
 }
 
 defineProps<Props>()
@@ -11,15 +11,27 @@ defineProps<Props>()
 <template>
   <div :class="$style.card">
     <a :href="`/posts/${ post.id }`" />
-    <p :class="$style.title">
-      {{ post.title }}
-    </p>
-    <p>{{ post.body }}</p>
+    <div>
+      <p :class="$style.title">
+        {{ post.title }}
+      </p>
+      <p>{{ post.category.name }}</p>
+      <div>
+        <span v-for="tag in post.tags" :key="tag.id">
+          #{{ tag.name }}
+        </span>
+      </div>
+    </div>
+    <div v-if="post.thumbnail_path !== undefined" :class="$style.thumbnail">
+      <img :src="post.thumbnail_path" width="128px">
+    </div>
   </div>
 </template>
 
 <style module>
 .card {
+  display: flex;
+  justify-content: space-between;
   padding: 16px 12px;
   border-radius: 4px;
   box-shadow: 1px 1px 6px -1px #666;
@@ -33,6 +45,12 @@ defineProps<Props>()
     width: 100%;
     height: 100%;
   }
+}
+
+.thumbnail {
+  width: 128px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .title {

@@ -1,4 +1,5 @@
-import type { Post } from '@/types/api'
+import dayjs from 'dayjs'
+import type { Category, Post, Tag } from '@/types/api'
 
 export const usePost = async (id: number) => {
   if (id < 0) {
@@ -7,6 +8,12 @@ export const usePost = async (id: number) => {
         id: -1,
         title: '',
         body: '',
+        thumbnail_path: '',
+        category: {} as Category,
+        tags: [] as Tag[],
+        created_time: dayjs().format(),
+        updated_time: dayjs().format(),
+        deleted_time: dayjs().format(),
       }),
       pending: ref<boolean>(false),
       error: ref<string>('input id is wrong.'),
@@ -20,6 +27,12 @@ export const usePost = async (id: number) => {
     id: -1,
     title: '',
     body: '',
+    thumbnail_path: '',
+    category: {} as Category,
+    tags: [] as Tag[],
+    created_time: dayjs().format(),
+    updated_time: dayjs().format(),
+    deleted_time: dayjs().format(),
   })
   const pending = ref<boolean>(false)
   const error = ref<string>('')

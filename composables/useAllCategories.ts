@@ -1,10 +1,10 @@
-import type { PostSummary } from '@/types/api'
+import type { Category } from '@/types/api'
 
-export const useAllPosts = async () => {
+export const useAllCategories = async () => {
   const runtimeConfig = useRuntimeConfig()
-  const url = `${runtimeConfig.public.api.url}/api/posts`
+  const url = `${runtimeConfig.public.api.url}/api/categories`
 
-  const data = ref<PostSummary[]>([])
+  const categoriesData = ref<Category[]>([])
   const pending = ref<boolean>(false)
   const error = ref<string>('')
 
@@ -14,7 +14,7 @@ export const useAllPosts = async () => {
       method: 'GET',
       credentials: 'include',
     })
-    data.value = (await response.json()) as PostSummary[]
+    categoriesData.value = (await response.json()) as Category[]
   } catch (e) {
     if (e instanceof Error) {
       error.value = e.message
@@ -26,7 +26,7 @@ export const useAllPosts = async () => {
   }
 
   return {
-    data,
+    categoriesData,
     pending,
     error,
   }
