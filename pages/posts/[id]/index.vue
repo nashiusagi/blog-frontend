@@ -44,10 +44,10 @@ onMounted(async () => {
       </div>
       <div :class="$style.labels">
         <div>
-          <CategoryLabel :name="post.category.name" />
+          <CategoryLabel :category="post.category" />
         </div>
         <div v-for="tag in post.tags" :key="tag.id">
-          <TagLabel :name="tag.name" />
+          <TagLabel :tag="tag" />
         </div>
       </div>
       <CategoriesBlock :categories="categories" />

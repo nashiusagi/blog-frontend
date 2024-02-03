@@ -23,13 +23,17 @@ defineProps<Props>()
     </div>
     <div>
       <p :class="$style.category_label">
-        <Icon name="pajamas:folder" color="black" />
-        {{ post.category.name }}
+        <a :href="`/categories/${post.category.id}`">
+          <Icon name="pajamas:folder" color="black" />
+          {{ post.category.name }}
+        </a>
       </p>
       <div>
         <span v-for="tag in post.tags" :key="tag.id" :class="$style.tag_label">
-          <Icon name="pajamas:label" color="black" />
-          {{ tag.name }}
+          <a :href="`/tags/${tag.id}`">
+            <Icon name="pajamas:label" color="black" />
+            {{ tag.name }}
+          </a>
         </span>
       </div>
     </div>
@@ -75,9 +79,19 @@ defineProps<Props>()
 .category_label {
   margin: 0;
   padding: 4px;
+
+  a {
+    text-decoration: none;
+    color: #111;
+  }
 }
 
 .tag_label {
   padding: 4px 12px 4px 0;
+
+  a {
+    text-decoration: none;
+    color: #111;
+  }
 }
 </style>

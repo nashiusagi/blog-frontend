@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import type { Category } from '@/types/api'
+
 defineProps<{
-  name: string;
+  category: Category;
 }>()
 </script>
 
 <template>
   <span :class="$style.category_label">
-    <Icon name="pajamas:folder" color="black" />
-    {{ name }}
+    <a :href="`/categories/${category.id}`">
+      <Icon name="pajamas:folder" color="black" />
+      {{ category.name }}
+    </a>
   </span>
 </template>
 

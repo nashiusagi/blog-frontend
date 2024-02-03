@@ -1,13 +1,17 @@
 <script setup lang="ts">
+import { Tag } from '@/types/api'
+
 defineProps<{
-  name: string;
+  tag: Tag;
 }>()
 </script>
 
 <template>
   <span :class="$style.tag_label">
-    <Icon name="pajamas:label" color="black" />
-    {{ name }}
+    <a :href="`/tags/${tag.id}`">
+      <Icon name="pajamas:label" color="black" />
+      {{ tag.name }}
+    </a>
   </span>
 </template>
 
