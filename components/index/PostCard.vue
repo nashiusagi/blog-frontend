@@ -10,11 +10,18 @@ defineProps<Props>()
 
 <template>
   <div :class="$style.card">
-    <a :href="`/posts/${ post.id }`" />
+    <div :class="$style.card_body">
+      <div>
+        <a :href="`/posts/${ post.id }`" />
+        <p :class="$style.title">
+          {{ post.title }}
+        </p>
+      </div>
+      <div v-if="post.thumbnail_path !== undefined" :class="$style.thumbnail">
+        <img :src="post.thumbnail_path" width="128px">
+      </div>
+    </div>
     <div>
-      <p :class="$style.title">
-        {{ post.title }}
-      </p>
       <p :class="$style.category_label">
         <Icon name="pajamas:folder" color="black" />
         {{ post.category.name }}
@@ -26,19 +33,19 @@ defineProps<Props>()
         </span>
       </div>
     </div>
-    <div v-if="post.thumbnail_path !== undefined" :class="$style.thumbnail">
-      <img :src="post.thumbnail_path" width="128px">
-    </div>
   </div>
 </template>
 
 <style module>
 .card {
-  display: flex;
-  justify-content: space-between;
   padding: 16px 12px;
   border-radius: 4px;
   box-shadow: 1px 1px 6px -1px #666;
+}
+
+.card_body {
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
   position: relative;
 
@@ -61,6 +68,8 @@ defineProps<Props>()
   font-size: 28px;
   font-weight: bold;
   font-style: normal;
+  margin: 0;
+  padding: 8px 0 12px;
 }
 
 .category_label {
