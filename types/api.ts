@@ -9,3 +9,8 @@ export interface Post {
 }
 
 export type PostSummary = Pick<Post, 'id' | 'title' | 'body' | 'thumbnail_path'>
+
+export interface Category {
+  id: number;
+  name: string;
+}

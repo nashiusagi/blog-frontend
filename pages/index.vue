@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import type { PostSummary } from '@/types/api'
+import type { PostSummary, Category } from '@/types/api'
 import MainLayout from '@/layouts/MainLayout.vue'
 import PostCard from '@/components/index/PostCard.vue'
 import IndexTitleBlock from '@/components/index/IndexTitleBlock.vue'
 import CategoriesBlock from '@/components/common/CategoriesBlock.vue'
 
 const posts = ref<PostSummary[]>([])
+const categories = ref<Category[]>([])
 
 onMounted(async () => {
   const { data, } = await useAllPosts()
   posts.value = data.value
+  const { categoriesData, } = await useAllCategories()
+  categories.value = categoriesData.value
 })
 </script>
 
@@ -22,7 +25,7 @@ onMounted(async () => {
           <PostCard :post="post" />
         </div>
       </div>
-      <CategoriesBlock />
+      <CategoriesBlock :categories="categories"/>
     </div>
   </MainLayout>
 </template>
