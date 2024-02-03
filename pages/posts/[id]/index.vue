@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import dayjs from 'dayjs'
 import type { Post } from '@/types/api'
 import MainLayout from '@/layouts/MainLayout.vue'
 import CategoriesBlock from '@/components/common/CategoriesBlock.vue'
@@ -9,6 +10,10 @@ const post = reactive<Post>({
   id: -1,
   title: '',
   body: '',
+  thumbnail_path: '',
+  created_time: dayjs().format(),
+  updated_time: dayjs().format(),
+  deleted_time: dayjs().format(),
 })
 
 onMounted(async () => {

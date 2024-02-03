@@ -1,10 +1,10 @@
-import type { Post } from '@/types/api'
+import type { PostSummary } from '@/types/api'
 
 export const useAllPosts = async () => {
   const runtimeConfig = useRuntimeConfig()
   const url = `${runtimeConfig.public.api.url}/api/posts`
 
-  const data = ref<Post[]>([])
+  const data = ref<PostSummary[]>([])
   const pending = ref<boolean>(false)
   const error = ref<string>('')
 
@@ -14,7 +14,7 @@ export const useAllPosts = async () => {
       method: 'GET',
       credentials: 'include',
     })
-    data.value = (await response.json()) as Post[]
+    data.value = (await response.json()) as PostSummary[]
   } catch (e) {
     if (e instanceof Error) {
       error.value = e.message

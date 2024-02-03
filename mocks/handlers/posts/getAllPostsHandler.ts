@@ -8,6 +8,7 @@ export const getAllPostsHandler = () => {
           id: 1,
           title: 'title1',
           body: 'body1',
+          thumbnail_path: '..//public/sample.png',
         },
         {
           id: 2,
