@@ -15,10 +15,14 @@ defineProps<Props>()
       <p :class="$style.title">
         {{ post.title }}
       </p>
-      <p>{{ post.category.name }}</p>
+      <p :class="$style.category_label">
+        <Icon name="pajamas:folder" color="black" />
+        {{ post.category.name }}
+      </p>
       <div>
-        <span v-for="tag in post.tags" :key="tag.id">
-          #{{ tag.name }}
+        <span v-for="tag in post.tags" :key="tag.id" :class="$style.tag_label">
+          <Icon name="pajamas:label" color="black" />
+          {{ tag.name }}
         </span>
       </div>
     </div>
@@ -57,5 +61,14 @@ defineProps<Props>()
   font-size: 28px;
   font-weight: bold;
   font-style: normal;
+}
+
+.category_label {
+  margin: 0;
+  padding: 4px;
+}
+
+.tag_label {
+  padding: 4px 12px 4px 0;
 }
 </style>

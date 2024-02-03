@@ -3,6 +3,8 @@ import dayjs from 'dayjs'
 import type { Category, Post, Tag } from '@/types/api'
 import MainLayout from '@/layouts/MainLayout.vue'
 import CategoriesBlock from '@/components/common/CategoriesBlock.vue'
+import CategoryLabel from '@/components/common/CategoryLabel.vue'
+import TagLabel from '@/components/common/TagLabel.vue'
 
 const route = useRoute()
 
@@ -39,13 +41,13 @@ onMounted(async () => {
         <p :class="$style.body">
           {{ post.body }}
         </p>
-        <p>
-          カテゴリー：<a>{{ post.category.name }}</a>
-        </p>
+      </div>
+      <div :class="$style.labels">
         <div>
-          <p v-for="tag in post.tags" :key="tag.id">
-            <a>#{{ tag.name }}</a>
-          </p>
+          <CategoryLabel :name="post.category.name" />
+        </div>
+        <div v-for="tag in post.tags" :key="tag.id">
+          <TagLabel :name="tag.name" />
         </div>
       </div>
       <CategoriesBlock :categories="categories" />
@@ -74,5 +76,10 @@ onMounted(async () => {
 
 .body {
   padding: 0 12px;
+}
+
+.labels {
+  display: flex;
+  gap: 10px;
 }
 </style>

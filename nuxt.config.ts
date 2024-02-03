@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true, },
   modules: [
-    'nuxt-vitest'
+    'nuxt-vitest',
+    'nuxt-icon'
   ],
   ssr: false,
   app: {
