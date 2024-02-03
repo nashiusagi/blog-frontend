@@ -1,5 +1,5 @@
 import dayjs from 'dayjs'
-import type { Post } from '@/types/api'
+import type { Category, Post, Tag } from '@/types/api'
 
 export const usePost = async (id: number) => {
   if (id < 0) {
@@ -9,6 +9,8 @@ export const usePost = async (id: number) => {
         title: '',
         body: '',
         thumbnail_path: '',
+        category: {} as Category,
+        tags: [] as Tag[],
         created_time: dayjs().format(),
         updated_time: dayjs().format(),
         deleted_time: dayjs().format(),
@@ -26,6 +28,8 @@ export const usePost = async (id: number) => {
     title: '',
     body: '',
     thumbnail_path: '',
+    category: {} as Category,
+    tags: [] as Tag[],
     created_time: dayjs().format(),
     updated_time: dayjs().format(),
     deleted_time: dayjs().format(),

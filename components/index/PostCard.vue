@@ -15,7 +15,12 @@ defineProps<Props>()
       <p :class="$style.title">
         {{ post.title }}
       </p>
-      <p>{{ post.body }}</p>
+      <p>{{ post.category.name }}</p>
+      <div>
+        <span v-for="tag in post.tags" :key="tag.id">
+          #{{ tag.name }}
+        </span>
+      </div>
     </div>
     <div v-if="post.thumbnail_path !== undefined" :class="$style.thumbnail">
       <img :src="post.thumbnail_path" width="128px">

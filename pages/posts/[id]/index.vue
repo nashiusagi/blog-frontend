@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
-import type { Post } from '@/types/api'
+import type { Category, Post, Tag } from '@/types/api'
 import MainLayout from '@/layouts/MainLayout.vue'
 import CategoriesBlock from '@/components/common/CategoriesBlock.vue'
 
@@ -11,14 +11,19 @@ const post = reactive<Post>({
   title: '',
   body: '',
   thumbnail_path: '',
+  category: {} as Category,
+  tags: [] as Tag[],
   created_time: dayjs().format(),
   updated_time: dayjs().format(),
   deleted_time: dayjs().format(),
 })
+const categories = ref<Category[]>([])
 
 onMounted(async () => {
   const { data, } = await usePost(Number(route.params.id))
   Object.assign(post, data)
+  const { categoriesData, } = await useAllCategories()
+  categories.value = categoriesData.value
 })
 
 </script>
@@ -34,8 +39,16 @@ onMounted(async () => {
         <p :class="$style.body">
           {{ post.body }}
         </p>
+        <p>
+          カテゴリー：<a>{{ post.category.name }}</a>
+        </p>
+        <div>
+          <p v-for="tag in post.tags" :key="tag.id">
+            <a>#{{ tag.name }}</a>
+          </p>
+        </div>
       </div>
-      <CategoriesBlock />
+      <CategoriesBlock :categories="categories" />
     </div>
   </MainLayout>
 </template>

@@ -10,6 +10,16 @@ describe('usePost test', () => {
       title: 'title1',
       body: 'body1',
       thumbnail_path: '',
+      category: {
+        id: 1,
+        name: '生活',
+      },
+      tags: [
+        {
+          id: 1,
+          name: '掃除',
+        }
+      ],
       created_time: dayjs().format(),
       updated_time: dayjs().format(),
       deleted_time: dayjs().format(),
