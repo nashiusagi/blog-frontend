@@ -10,6 +10,7 @@ defineProps<{
   <div :class="$style.categories_block">
     <div :class="$style.title">
       <p>
+        <Icon name="pajamas:folder" color="black" />
         カテゴリー
       </p>
     </div>
