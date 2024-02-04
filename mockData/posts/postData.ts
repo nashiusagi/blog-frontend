@@ -3,8 +3,8 @@ import { Post } from '@/types/api'
 
 export const postData: Post = {
   id: 1,
-  title: 'title1',
-  body: 'body1',
+  title: '風呂掃除',
+  body: '週一回くらいやらないといけないし、週一回やっても足りないことがあるので結構やばい。',
   thumbnail_path: '..//public/sample.png',
   category: {
     id: 1,
