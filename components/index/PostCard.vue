@@ -10,31 +10,46 @@ defineProps<Props>()
 
 <template>
   <div :class="$style.card">
-    <a :href="`/posts/${ post.id }`" />
-    <div>
-      <p :class="$style.title">
-        {{ post.title }}
-      </p>
-      <p>{{ post.category.name }}</p>
+    <div :class="$style.card_body">
       <div>
-        <span v-for="tag in post.tags" :key="tag.id">
-          #{{ tag.name }}
-        </span>
+        <a :href="`/posts/${ post.id }`" />
+        <p :class="$style.title">
+          {{ post.title }}
+        </p>
+      </div>
+      <div v-if="post.thumbnail_path !== undefined" :class="$style.thumbnail">
+        <img :src="post.thumbnail_path" width="128px">
       </div>
     </div>
-    <div v-if="post.thumbnail_path !== undefined" :class="$style.thumbnail">
-      <img :src="post.thumbnail_path" width="128px">
+    <div>
+      <p :class="$style.category_label">
+        <a :href="`/categories/${post.category.id}`">
+          <Icon name="pajamas:folder" color="black" />
+          {{ post.category.name }}
+        </a>
+      </p>
+      <div>
+        <span v-for="tag in post.tags" :key="tag.id" :class="$style.tag_label">
+          <a :href="`/tags/${tag.id}`">
+            <Icon name="pajamas:label" color="black" />
+            {{ tag.name }}
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <style module>
 .card {
-  display: flex;
-  justify-content: space-between;
   padding: 16px 12px;
   border-radius: 4px;
   box-shadow: 1px 1px 6px -1px #666;
+}
+
+.card_body {
+  display: flex;
+  justify-content: space-between;
   cursor: pointer;
   position: relative;
 
@@ -57,5 +72,26 @@ defineProps<Props>()
   font-size: 28px;
   font-weight: bold;
   font-style: normal;
+  margin: 0;
+  padding: 8px 0 12px;
+}
+
+.category_label {
+  margin: 0;
+  padding: 4px;
+
+  a {
+    text-decoration: none;
+    color: #111;
+  }
+}
+
+.tag_label {
+  padding: 4px 12px 4px 0;
+
+  a {
+    text-decoration: none;
+    color: #111;
+  }
 }
 </style>
