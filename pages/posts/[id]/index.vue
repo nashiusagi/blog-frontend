@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
 import type { Category, Post, Tag } from '@/types/api'
 import MainLayout from '@/layouts/MainLayout.vue'
 import CategoriesBlock from '@/components/common/CategoriesBlock.vue'
@@ -15,9 +14,9 @@ const post = reactive<Post>({
   thumbnail_path: '',
   category: {} as Category,
   tags: [] as Tag[],
-  created_time: dayjs().format(),
-  updated_time: dayjs().format(),
-  deleted_time: dayjs().format(),
+  created_time: '',
+  updated_time: '',
+  deleted_time: '',
 })
 const categories = ref<Category[]>([])
 
@@ -37,6 +36,9 @@ onMounted(async () => {
         <p :class="$style.title">
           <span>{{ route.params.id }}. </span>
           {{ post.title }}
+        </p>
+        <p :class="$style.created_time">
+          {{ getDateFromDateTime(post.created_time) }}
         </p>
         <p :class="$style.body">
           {{ post.body }}
@@ -72,6 +74,13 @@ onMounted(async () => {
   font-size: 32px;
   font-weight: bold;
   font-style: normal;
+}
+
+.created_time {
+  margin: 0;
+  padding: 4px;
+  color: #757575;
+  font-size: 12px;
 }
 
 .body {

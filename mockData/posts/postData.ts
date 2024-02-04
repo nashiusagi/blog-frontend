@@ -18,5 +18,5 @@ export const postData: Post = {
   ],
   created_time: dayjs().format(),
   updated_time: dayjs().format(),
-  deleted_time: dayjs().format(),
+  deleted_time: '',
 }
