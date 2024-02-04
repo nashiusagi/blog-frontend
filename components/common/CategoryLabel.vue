@@ -22,5 +22,10 @@ defineProps<{
   box-shadow: 1px 1px 6px -1px #666;
   border-radius: 999px;
   margin: auto;
+
+  a {
+    color: #111;
+    text-decoration: none;
+  }
 }
 </style>
