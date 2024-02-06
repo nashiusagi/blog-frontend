@@ -21,3 +21,8 @@ export interface Post {
 }
 
 export type PostSummary = Pick<Post, 'id' | 'title' | 'thumbnail_path' | 'category' | 'tags'>
+
+export interface PostsWithCategory {
+  posts: PostSummary[];
+  category: Category;
+}
