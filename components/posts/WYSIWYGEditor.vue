@@ -41,8 +41,13 @@ import ItalicIconButton from '@/components/atoms/buttons/iconButtons/ItalicIconB
   width: calc(100% - 28px);
   height: 200px;
   font-size: 18px;
-  font-weight: 300;
-  font-style: normal;
-  font-family: 'Hiragino Sans'
+}
+</style>
+
+<style scoped>
+textarea {
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
 }
 </style>
