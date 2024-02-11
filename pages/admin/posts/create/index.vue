@@ -5,6 +5,11 @@ import WYSIWYGEditor from '@/components/posts/WYSIWYGEditor.vue'
 const submit = () => {
   alert('submit!')
 }
+
+const body = ref('')
+const onBodyChange = (value: string) => {
+  body.value = value
+}
 </script>
 
 <template>
@@ -23,7 +28,8 @@ const submit = () => {
               本文
             </p>
             <div :class="$style.editor">
-              <WYSIWYGEditor />
+              <WYSIWYGEditor @input="onBodyChange" />
+              {{ body }}
             </div>
           </div>
           <div :class="$style.submit_container">

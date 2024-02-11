@@ -6,12 +6,24 @@ import NumberListIconButton from '@/components/atoms/buttons/iconButtons/NumberL
 import ListIconButton from '@/components/atoms/buttons/iconButtons/ListIconButton.vue'
 import BoldIconButton from '@/components/atoms/buttons/iconButtons/BoldIconButton.vue'
 import ItalicIconButton from '@/components/atoms/buttons/iconButtons/ItalicIconButton.vue'
+
+const emits = defineEmits<{(e: 'input', value: string): void}>()
+
+const onBodyChange = (body: string): void => {
+  emits('input', body)
+}
+
+const body = ref<string>('')
+
+const addBoldAttribute = () => {
+  body.value = body.value + '****'
+}
 </script>
 
 <template>
   <div :class="$style.container">
     <div :class="$style.icons_block">
-      <BoldIconButton />
+      <BoldIconButton @click="addBoldAttribute" />
       <ItalicIconButton />
       <LinkIconButton />
       <CodeIconButton />
@@ -20,7 +32,11 @@ import ItalicIconButton from '@/components/atoms/buttons/iconButtons/ItalicIconB
       <ListIconButton />
     </div>
     <div>
-      <textarea :class="$style.textarea" />
+      <textarea
+        v-model="body"
+        :class="$style.textarea"
+        @input="onBodyChange(body)"
+      />
     </div>
   </div>
 </template>
