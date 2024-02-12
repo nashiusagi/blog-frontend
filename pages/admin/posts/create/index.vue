@@ -7,26 +7,30 @@ const submit = () => {
   alert('submit!')
 }
 
-const body = ref('')
+const formData = reactive({
+  title: '',
+  body: '',
+  category: '',
+  tags: [{
+    id: 1,
+    name: '',
+  }],
+})
+
 const onBodyChange = (value: string) => {
-  body.value = value
+  formData.body = value
 }
 
-const tags = ref([{
-  id: 1,
-  name: '',
-}])
-
 const addTag = () => {
-  const length = tags.value.length
-  tags.value.push({
+  const length = formData.tags.length
+  formData.tags.push({
     id: length + 1,
     name: '',
   })
 }
 
 const removeTag = () => {
-  tags.value.pop()
+  formData.tags.pop()
 }
 </script>
 
@@ -39,7 +43,11 @@ const removeTag = () => {
             <p :class="$style.content_text">
               タイトル
             </p>
-            <input type="text" :class="$style.title_input">
+            <input
+              v-model="formData.title"
+              type="text"
+              :class="$style.title_input"
+            >
           </div>
           <div :class="$style.body_container">
             <p :class="$style.content_text">
@@ -47,7 +55,7 @@ const removeTag = () => {
             </p>
             <div :class="$style.editor">
               <WYSIWYGEditor @input="onBodyChange" />
-              <MarkDownPreviewer :source="body" />
+              <MarkDownPreviewer :source="formData.body" />
             </div>
           </div>
           <div :class="$style.category_container">
@@ -56,7 +64,11 @@ const removeTag = () => {
               カテゴリー
             </p>
             <div>
-              <input type="text" :class="$style.category_input">
+              <input
+                v-model="formData.category"
+                type="text"
+                :class="$style.category_input"
+              >
             </div>
           </div>
           <div :class="$style.tag_container">
@@ -65,13 +77,13 @@ const removeTag = () => {
               タグ
             </p>
             <div :class="$style.tag_inputs_container">
-              <div v-for="tag in tags" :key="tag.id">
+              <div v-for="tag in formData.tags" :key="tag.id">
                 <input v-model="tag.name" type="text" :class="$style.tag_input">
               </div>
               <div @click="addTag">
                 + タグを追加
               </div>
-              <div v-if="tags.length>1" @click="removeTag">
+              <div v-if="formData.tags.length>1" @click="removeTag">
                 - タグを削除
               </div>
             </div>
