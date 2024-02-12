@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import WYSIWYGEditor from '@/components/posts/WYSIWYGEditor.vue'
+import MarkDownPreviewer from '@/components/posts/MarkDownPreviewer.vue'
 
 const submit = () => {
   alert('submit!')
@@ -29,7 +30,7 @@ const onBodyChange = (value: string) => {
             </p>
             <div :class="$style.editor">
               <WYSIWYGEditor @input="onBodyChange" />
-              {{ body }}
+              <MarkDownPreviewer :source="body" />
             </div>
           </div>
           <div :class="$style.submit_container">

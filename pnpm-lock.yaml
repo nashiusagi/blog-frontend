@@ -11,6 +11,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
+  marked:
+    specifier: ^12.0.0
+    version: 12.0.0
 
 devDependencies:
   '@nuxtjs/eslint-config-typescript':
@@ -91,6 +94,9 @@ devDependencies:
   vue:
     specifier: ^3.4.6
     version: 3.4.10(typescript@5.3.3)
+  vue-dompurify-html:
+    specifier: ^5.0.1
+    version: 5.0.1(vue@3.4.10)
   vue-router:
     specifier: ^4.2.5
     version: 4.2.5(vue@3.4.10)
@@ -6665,6 +6671,10 @@ packages:
       domelementtype: 2.3.0
     dev: true
 
+  /dompurify@3.0.8:
+    resolution: {integrity: sha512-b7uwreMYL2eZhrSCRC4ahLTeZcPZxSmYfmcQGXGkXiZSNW1X85v+SDM5KsWcpivIiUBH47Ji7NtyUdpLeF5JZQ==}
+    dev: true
+
   /domutils@3.1.0:
     resolution: {integrity: sha512-H78uMmQtI2AhgDJjWeQmHwJJ2bLPD3GMmO7Zja/ZZh84wkm+4ut+IUnUdRa8uCGX88DiVx1j6FRe1XfxEgjEZA==}
     dependencies:
@@ -9278,6 +9288,12 @@ packages:
     dependencies:
       react: 18.2.0
     dev: true
+
+  /marked@12.0.0:
+    resolution: {integrity: sha512-Vkwtq9rLqXryZnWaQc86+FHLC6tr/fycMfYAhiOIXkrNmeGAyhSxjqu0Rs1i0bBqw5u0S7+lV9fdH2ZSVaoa0w==}
+    engines: {node: '>= 18'}
+    hasBin: true
+    dev: false
 
   /mdast-util-definitions@4.0.0:
     resolution: {integrity: sha512-k8AJ6aNnUkB7IE+5azR9h81O5EQ/cTDXtWdMq9Kk5KcEW/8ritU5CeLg/9HhOC++nALHBlaogJ5jz0Ybk3kPMQ==}
@@ -13207,6 +13223,15 @@ packages:
       ts-map: 1.0.3
       vue: 3.4.10(typescript@5.3.3)
       vue-inbrowser-compiler-independent-utils: 4.71.1(vue@3.4.10)
+    dev: true
+
+  /vue-dompurify-html@5.0.1(vue@3.4.10):
+    resolution: {integrity: sha512-8yoMbo7PX4vt01k0dcCHvP4tY0fOCLkQeMhXXRNmH7/muIUTkFOQNzkAtE0RmqgaF/unabvYnsnCu2CjIMgueg==}
+    peerDependencies:
+      vue: ^3.0.0
+    dependencies:
+      dompurify: 3.0.8
+      vue: 3.4.10(typescript@5.3.3)
     dev: true
 
   /vue-eslint-parser@9.4.0(eslint@8.56.0):
