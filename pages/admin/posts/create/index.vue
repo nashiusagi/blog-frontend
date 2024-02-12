@@ -1,14 +1,36 @@
 <script setup lang="ts">
 import AdminLayout from '@/layouts/AdminLayout.vue'
 import WYSIWYGEditor from '@/components/posts/WYSIWYGEditor.vue'
+import MarkDownPreviewer from '@/components/posts/MarkDownPreviewer.vue'
 
 const submit = () => {
   alert('submit!')
 }
 
-const body = ref('')
+const formData = reactive({
+  title: '',
+  body: '',
+  category: '',
+  tags: [{
+    id: 1,
+    name: '',
+  }],
+})
+
 const onBodyChange = (value: string) => {
-  body.value = value
+  formData.body = value
+}
+
+const addTag = () => {
+  const length = formData.tags.length
+  formData.tags.push({
+    id: length + 1,
+    name: '',
+  })
+}
+
+const removeTag = () => {
+  formData.tags.pop()
 }
 </script>
 
@@ -21,7 +43,11 @@ const onBodyChange = (value: string) => {
             <p :class="$style.content_text">
               タイトル
             </p>
-            <input type="text" :class="$style.title_input">
+            <input
+              v-model="formData.title"
+              type="text"
+              :class="$style.title_input"
+            >
           </div>
           <div :class="$style.body_container">
             <p :class="$style.content_text">
@@ -29,7 +55,37 @@ const onBodyChange = (value: string) => {
             </p>
             <div :class="$style.editor">
               <WYSIWYGEditor @input="onBodyChange" />
-              {{ body }}
+              <MarkDownPreviewer :source="formData.body" />
+            </div>
+          </div>
+          <div :class="$style.category_container">
+            <p :class="$style.content_text">
+              <Icon name="pajamas:folder" color="black" />
+              カテゴリー
+            </p>
+            <div>
+              <input
+                v-model="formData.category"
+                type="text"
+                :class="$style.category_input"
+              >
+            </div>
+          </div>
+          <div :class="$style.tag_container">
+            <p :class="$style.content_text">
+              <Icon name="pajamas:label" color="black" />
+              タグ
+            </p>
+            <div :class="$style.tag_inputs_container">
+              <div v-for="tag in formData.tags" :key="tag.id">
+                <input v-model="tag.name" type="text" :class="$style.tag_input">
+              </div>
+              <div @click="addTag">
+                + タグを追加
+              </div>
+              <div v-if="formData.tags.length>1" @click="removeTag">
+                - タグを削除
+              </div>
             </div>
           </div>
           <div :class="$style.submit_container">
@@ -79,6 +135,32 @@ const onBodyChange = (value: string) => {
 
 .editor {
   padding: 12px 0;
+}
+
+.category_container {
+  padding: 12px;
+}
+
+.category_input {
+  font-size: 18px;
+  line-height: 1.5;
+  height: 28px;
+}
+
+.tag_container {
+  padding: 12px;
+}
+
+.tag_inputs_container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tag_input {
+  font-size: 18px;
+  line-height: 1.5;
+  height: 28px;
 }
 
 .submit_container {
