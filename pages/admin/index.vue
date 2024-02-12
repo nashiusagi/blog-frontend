@@ -7,5 +7,10 @@ import AdminLayout from '@/layouts/AdminLayout.vue'
     <div>
       admin
     </div>
+    <div>
+      <a href="/admin/posts/create">
+        post create
+      </a>
+    </div>
   </AdminLayout>
 </template>
