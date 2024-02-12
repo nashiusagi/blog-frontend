@@ -17,5 +17,14 @@ watch(
 </script>
 
 <template>
-  <div v-dompurify-html="compileMarkdown" />
+  <div
+    v-dompurify-html="compileMarkdown"
+    :class="$style.preview"
+  />
 </template>
+
+<style module>
+.preview {
+  font-size: 18px;
+}
+</style>
