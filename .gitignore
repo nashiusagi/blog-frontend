@@ -25,3 +25,6 @@ logs
 
 # storybook
 storybook-static/
+
+# my custom
+pages/admin/mypage/
